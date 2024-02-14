@@ -11,12 +11,12 @@ local Tab =
         PremiumOnly = false
     }
 )
-Tab:AddToggle(
+
+Tab:AddButton(
     {
-        Name = "AutoClaimReward",
-        Callback = function(c)
-            Config.autoclaimreward = c
-            spawn(autoclaimreward)
+        Name = "Auto Claim Reward",
+        Callback = function()
+            autoclaimreward()
         end
     }
 )
@@ -124,46 +124,45 @@ Tab:AddButton(
 
 OrionLib:Init()
 
-spawn(function()
-    while task.wait() and Config.autoclaimreward do
-        local args = {[1] = 1}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 2}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 3}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 4}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 5}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 6}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 7}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 8}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 9}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 10}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 11}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
-        local args = {[1] = 12}
-        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
-        wait(1)
+function autoclaimreward()
+    while wait() do
+        spawn(function()
+            local args = {[1] = 1}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 2}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 4}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 5}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 6}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 7}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 8}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 9}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 10}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 11}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+            local args = {[1] = 12}
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            wait(1)
+        end)
     end
-end)
+end
 
 function antiAFK()
     local VirtualInputManager = game:GetService("VirtualInputManager")
