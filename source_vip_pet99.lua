@@ -12,6 +12,16 @@ local Tab =
     }
 )
 
+Tab:AddToggle(
+    {
+        Name = "Auto Open Egg",
+        Default = false,
+        Callback = function(Value)
+            AutoOE()
+            _G.AutoOE = Value
+        end
+    }
+)
 Tab:AddButton(
     {
         Name = "Auto Claim Reward",
@@ -162,6 +172,23 @@ function autoclaimreward()
             wait(1)
         end)
     end
+end
+
+function AutoOE()
+    spawn(function()
+        while _G.AutoOE == true do
+            game:GetService("ReplicatedStorage").Network.Eggs_RequestPurchase:InvokeServer("Tech Ciruit Egg",18)
+            wait(0.1)
+            game:GetService("ReplicatedStorage").Network.Click:FireServer(Ray.new({-10030.4727, 24.3818359, -314.335724}, {-0.892254412, -0.293438435, 0.343184859}),)
+            wait(0.1)
+            game:GetService("ReplicatedStorage").Network.Click:FireServer(Ray.new({-10030.4727, 24.3818359, -314.335724}, {-0.892254412, -0.293438435, 0.343184859}),)
+            wait(0.1)
+            game:GetService("ReplicatedStorage").Network.Click:FireServer(Ray.new({-10030.4727, 24.3818359, -314.335724}, {-0.892254412, -0.293438435, 0.343184859}),)
+            wait(0.1)
+            game:GetService("ReplicatedStorage").Network.Click:FireServer(Ray.new({-10030.4727, 24.3818359, -314.335724}, {-0.892254412, -0.293438435, 0.343184859}),)
+            wait(0.1)
+        end
+    end)
 end
 
 function antiAFK()
